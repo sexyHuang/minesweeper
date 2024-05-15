@@ -12,16 +12,14 @@ export class EventBus {
     if (!this._listeners[event]) {
       return;
     }
-    this._listeners[event] = this._listeners[event].filter(
-      (l) => l !== listener
-    );
+    this._listeners[event] = this._listeners[event].filter(l => l !== listener);
   }
 
   emit(event: string, ...args: any[]) {
     if (!this._listeners[event]) {
       return;
     }
-    this._listeners[event].forEach((l) => l(...args));
+    this._listeners[event].forEach(l => l(...args));
   }
   once(event: string, listener: Function) {
     const fn = (...args: any[]) => {

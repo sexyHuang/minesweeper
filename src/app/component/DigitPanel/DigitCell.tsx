@@ -1,6 +1,5 @@
-import Image from "next/image";
-import { useMemo } from "react";
-import { CellImage } from "./styled";
+import { useMemo } from 'react';
+import { CellImage } from './styled';
 
 type DigitCellProps = {
   value: string;
@@ -9,7 +8,7 @@ type DigitCellProps = {
 
 export const DigitCell: React.FC<DigitCellProps> = ({
   value,
-  size = "15px",
+  size = '15px'
 }) => {
   const src = useMemo(() => {
     const prefix = `/digit/`;

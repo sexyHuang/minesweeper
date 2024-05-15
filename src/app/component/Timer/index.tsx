@@ -45,3 +45,5 @@ export const Timer = forwardRef<TimerRef, TimerProps>(
     return <DigitPanel value={count} />;
   }
 );
+
+Timer.displayName = "Timer";

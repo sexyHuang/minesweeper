@@ -1,9 +1,9 @@
-import { EventBus } from "../EventBus";
-import { GameStatus } from "./constants";
+import { EventBus } from '../EventBus';
+import { GameStatus } from './constants';
 
 export enum MineBoardEventName {
-  FLAGGED_CHANGE = "flaggedChange",
-  GAME_STATUS_CHANGE = "gameStatusChange",
+  FLAGGED_CHANGE = 'flaggedChange',
+  GAME_STATUS_CHANGE = 'gameStatusChange'
 }
 
 export class MineBoardEvents extends EventBus {

@@ -1,9 +1,9 @@
-import { GameStatus } from "@/app/lib/MineBoard/constants";
-import styled from "styled-components";
-import face0 from "../../../../public/face_unpressed.svg";
-import facePressed from "../../../../public/face_pressed.svg";
-import faceWin from "../../../../public/face_win.svg";
-import faceLose from "../../../../public/face_lose.svg";
+import { GameStatus } from '@/app/lib/MineBoard/constants';
+import styled from 'styled-components';
+import face0 from '../../../../public/face_unpressed.svg';
+import facePressed from '../../../../public/face_pressed.svg';
+import faceWin from '../../../../public/face_win.svg';
+import faceLose from '../../../../public/face_lose.svg';
 
 export const FaceButton = styled.div<{
   status: GameStatus;
@@ -25,6 +25,6 @@ export const FaceButton = styled.div<{
   }}
 
   &:active {
-    background-image: url("${facePressed.src}");
+    background-image: url('${facePressed.src}');
   }
 `;

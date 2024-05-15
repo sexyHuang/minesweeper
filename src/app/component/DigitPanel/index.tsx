@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-import { Box } from "./styled";
-import { DigitCell } from "./DigitCell";
-import * as RATIO from "./constants";
+import { useMemo } from 'react';
+import { Box } from './styled';
+import { DigitCell } from './DigitCell';
+import * as RATIO from './constants';
 
 export type DigitPanelProps = {
   value?: number;
@@ -18,16 +18,16 @@ export const DigitPanel: React.FC<DigitPanelProps> = ({
   ...props
 }) => {
   const valStr = useMemo(() => {
-    if (value === undefined) return "0".padStart(3, "0");
+    if (value === undefined) return '0'.padStart(3, '0');
     if (value < MIN) return `${MIN}`;
     if (value > MAX) return `${MAX}`;
-    return `${value}`.padStart(3, "0");
+    return `${value}`.padStart(3, '0');
   }, [value]);
 
-  const _size = typeof size === "number" ? `${size}px` : size;
+  const _size = typeof size === 'number' ? `${size}px` : size;
   return (
     <Box size={_size} {...props}>
-      {valStr.split("").map((v, i) => (
+      {valStr.split('').map((v, i) => (
         <DigitCell
           key={i}
           value={v}

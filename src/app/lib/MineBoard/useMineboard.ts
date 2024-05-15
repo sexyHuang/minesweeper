@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { MineBoard, MineBoardOptions } from ".";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { MineBoard, MineBoardOptions } from '.';
 
 export const useMineBoard = (options: MineBoardOptions) => {
   const boardRef = useRef(new MineBoard(options));
@@ -9,11 +9,11 @@ export const useMineBoard = (options: MineBoardOptions) => {
   const withUpdate = (fn: (idx: number) => number[]) => {
     return (cell: number) => {
       const updatedCells = fn(cell);
-      setBoard((board) => {
+      setBoard(board => {
         return board.map((cell, i) => {
-          if (updatedCells.some((idx) => idx === i)) {
+          if (updatedCells.some(idx => idx === i)) {
             return {
-              ...boardRef.current.board[i],
+              ...boardRef.current.board[i]
             };
           }
           return cell;
@@ -22,14 +22,17 @@ export const useMineBoard = (options: MineBoardOptions) => {
     };
   };
 
-  const reset = (_options?: MineBoardOptions) => {
-    boardRef.current.init(_options ?? options);
-    setBoard([...boardRef.current.board]);
-  };
+  const reset = useCallback(
+    (_options?: MineBoardOptions) => {
+      boardRef.current.init(_options ?? options);
+      setBoard([...boardRef.current.board]);
+    },
+    [options]
+  );
 
   useEffect(() => {
-    reset(options);
-  }, [options]);
+    reset();
+  }, [reset]);
 
   return {
     boardRef,
@@ -56,6 +59,6 @@ export const useMineBoard = (options: MineBoardOptions) => {
     board,
     openCell: withUpdate(boardRef.current.openCell.bind(boardRef.current)),
     toggleFlag: withUpdate(boardRef.current.toggleFlag.bind(boardRef.current)),
-    openAround: withUpdate(boardRef.current.openAround.bind(boardRef.current)),
+    openAround: withUpdate(boardRef.current.openAround.bind(boardRef.current))
   };
 };

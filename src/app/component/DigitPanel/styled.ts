@@ -1,14 +1,14 @@
-import styled, { css } from "styled-components";
-import BG from "../../../../public/nums_background.svg";
-import * as RATIO from "./constants";
-import Image from "next/image";
+import styled, { css } from 'styled-components';
+import BG from '../../../../public/nums_background.svg';
+import * as RATIO from './constants';
+import Image from 'next/image';
 
 export const Box = styled.div<{
   size: string;
 }>`
   aspect-ratio: ${RATIO.BOX_RATIO};
   height: auto;
-  background-image: url("${BG.src}");
+  background-image: url('${BG.src}');
   background-size: 100%;
   display: flex;
   ${({ size }) => {

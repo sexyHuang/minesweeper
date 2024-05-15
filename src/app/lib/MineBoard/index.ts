@@ -1,7 +1,7 @@
-import { Cell } from "../Cell";
-import { MineBoardEvents } from "./MineBoardEvents";
-import { MinedCellSet } from "./MinedCellSet";
-import { GameStatus } from "./constants";
+import { Cell } from '../Cell';
+import { MineBoardEvents } from './MineBoardEvents';
+import { MinedCellSet } from './MinedCellSet';
+import { GameStatus } from './constants';
 
 export type MineBoardOptions = {
   rows: number;
@@ -35,7 +35,7 @@ export class MineBoard extends MineBoardEvents {
       this._board.push(
         new Cell({
           idx: i,
-          mined: false,
+          mined: false
         })
       );
     }
@@ -56,7 +56,7 @@ export class MineBoard extends MineBoardEvents {
   }
 
   get board() {
-    return this._board.map((cell) => cell.toJSON());
+    return this._board.map(cell => cell.toJSON());
   }
   get gameOver() {
     return (
@@ -127,7 +127,7 @@ export class MineBoard extends MineBoardEvents {
     }
     let flagCount = 0;
 
-    this.travelAround(idx, (cell) => {
+    this.travelAround(idx, cell => {
       if (cell.flagged) {
         flagCount++;
       }

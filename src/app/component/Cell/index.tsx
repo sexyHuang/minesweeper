@@ -1,5 +1,5 @@
-import { CellImage } from "./CellImage";
-import { useMemo } from "react";
+import { CellImage } from './CellImage';
+import { useMemo } from 'react';
 type BaseCell = {
   opened: boolean;
   flagged: boolean;
@@ -20,7 +20,7 @@ type CellProps = {
 enum ClickingButton {
   NONE,
   LEFT,
-  RIGHT = 2,
+  RIGHT = 2
 }
 
 const Cell: React.FC<CellProps> = ({
@@ -29,15 +29,15 @@ const Cell: React.FC<CellProps> = ({
   onCheck,
   onUnCheck,
   clicking,
-  onToggleFlag,
+  onToggleFlag
 }) => {
   const type = useMemo(() => {
-    if (cell.flagged) return "flag";
+    if (cell.flagged) return 'flag';
     if (!cell.opened) {
       if (clicking) return 0;
-      return "closed";
+      return 'closed';
     }
-    if (cell.mined) return cell.safe ? "mine" : "mine_red";
+    if (cell.mined) return cell.safe ? 'mine' : 'mine_red';
     return cell.minedCount;
   }, [cell, clicking]);
 
@@ -64,12 +64,12 @@ const Cell: React.FC<CellProps> = ({
     <div
       onMouseDown={onMouseDown}
       onMouseLeave={() => onUnCheck(cell)}
-      onContextMenu={(e) => e.preventDefault()}
-      onMouseUp={(e) => {
+      onContextMenu={e => e.preventDefault()}
+      onMouseUp={e => {
         if (e.button === 0) onOpen(cell);
         onUnCheck(cell);
       }}
-      onMouseEnter={(e) => {
+      onMouseEnter={e => {
         if (e.buttons === ClickingButton.LEFT) onMouseDownLeft();
       }}
     >

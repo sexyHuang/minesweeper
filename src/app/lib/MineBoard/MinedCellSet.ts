@@ -29,7 +29,7 @@ export class MinedCellSet {
       }
       cellIdxSet.add(idx);
     }
-    disablePositions.forEach((idx) => {
+    disablePositions.forEach(idx => {
       cellIdxSet.delete(idx);
     });
     this._minedCellSet = cellIdxSet;

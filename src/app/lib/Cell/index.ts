@@ -57,7 +57,7 @@ export class Cell {
       minedCount: this.minedCount,
       flagged: this.flagged,
       opened: this.opened,
-      safe: this.safe,
+      safe: this.safe
     };
   }
 }

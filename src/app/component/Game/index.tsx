@@ -1,13 +1,13 @@
-"use client";
-import { LEVEL } from "./constants";
-import { GameBox, Header } from "./styled";
+'use client';
+import { LEVEL } from './constants';
+import { GameBox, Header } from './styled';
 
-import { useRef, useState } from "react";
-import Board, { BoardRef } from "./../Board";
-import { Timer, TimerRef } from "./../Timer";
-import { GameStatus } from "@/app/lib/MineBoard/constants";
-import { DigitPanel } from "../DigitPanel";
-import { FaceButton } from "../FaceButton";
+import { useRef, useState } from 'react';
+import Board, { BoardRef } from './../Board';
+import { Timer, TimerRef } from './../Timer';
+import { GameStatus } from '@/app/lib/MineBoard/constants';
+import { DigitPanel } from '../DigitPanel';
+import { FaceButton } from '../FaceButton';
 export type GameProps = {
   level: keyof typeof LEVEL;
 };
@@ -34,7 +34,7 @@ export const Game = ({ level }: GameProps) => {
       <Board
         {...levelObj}
         onToggleFlag={setFlags}
-        onGameStatusChange={(status) => {
+        onGameStatusChange={status => {
           setGameStatus(status);
           switch (status) {
             case GameStatus.PLAYING:

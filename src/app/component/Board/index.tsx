@@ -55,7 +55,7 @@ const Board = forwardRef<BoardRef, BoardProps>(
       return () => {
         offList.forEach((off) => off?.());
       };
-    }, []);
+    }, [boardRef, onGameStatusChange, onToggleFlag]);
     return (
       <BoardBase columns={cols}>
         {board.map((cell, i) => {
@@ -84,5 +84,7 @@ const Board = forwardRef<BoardRef, BoardProps>(
     );
   }
 );
+
+Board.displayName = "Board";
 
 export default Board;
