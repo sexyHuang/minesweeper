@@ -11,5 +11,5 @@ export const CellImage: React.FC<CellImageProps> = ({ type }) => {
     if (typeof type === 'number') return `${prefix}type${type}.svg`;
     return `${prefix}${type}.svg`;
   }, [type]);
-  return <Image src={src} width={24} height={24} alt={`${type}`} />;
+  return <Image src={src} width={24} height={24} alt={`${type}`} priority />;
 };
