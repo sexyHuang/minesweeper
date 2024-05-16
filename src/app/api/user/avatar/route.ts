@@ -1,8 +1,8 @@
+import { authOptions } from '@/app/lib/auth/options';
 import { db } from '@/app/lib/prisma';
 import { put } from '@vercel/blob';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
-import { authOptions } from '../../auth/[...nextauth]/route';
 
 const getFilename = (filename: string) => {
   const [name, ext] = filename.split('.');

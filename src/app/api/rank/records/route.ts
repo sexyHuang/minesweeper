@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { authOptions } from '../../auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import { z } from 'zod';
 import { db } from '@/app/lib/prisma';
 import { LEVEL } from '@/app/lib/constants';
+import { authOptions } from '@/app/lib/auth/options';
 
 const schema = z.object({
   level: z.nativeEnum(LEVEL),

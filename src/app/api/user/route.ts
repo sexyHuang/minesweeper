@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { authOptions } from '../auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import { z } from 'zod';
 import { db } from '@/app/lib/prisma';
+import { authOptions } from '@/app/lib/auth/options';
 
 const schema = z.object({
   name: z.string()
