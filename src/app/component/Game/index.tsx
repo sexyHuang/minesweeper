@@ -8,6 +8,8 @@ import { Timer, TimerRef } from './../Timer';
 import { GameStatus } from '@/app/lib/MineBoard/constants';
 import { DigitPanel } from '../DigitPanel';
 import { FaceButton } from '../FaceButton';
+import { Modal } from 'antd';
+import { upLoadRecord } from '@/app/lib/request/uploadRecord';
 export type GameProps = {
   level: keyof typeof LEVEL;
 };
@@ -41,9 +43,15 @@ export const Game = ({ level }: GameProps) => {
               timerRef.current?.start();
               break;
             case GameStatus.WIN:
-            case GameStatus.LOSE:
               const time = timerRef.current?.stop();
-              console.log(time);
+              upLoadRecord({ level, time: time! });
+              Modal.confirm({
+                title: '恭喜你，你赢了！',
+                content: `用时${time! / 1000}秒`
+              });
+              break;
+            case GameStatus.LOSE:
+              timerRef.current?.stop();
               break;
             default:
               timerRef.current?.reset();
