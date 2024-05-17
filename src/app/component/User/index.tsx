@@ -1,9 +1,10 @@
-import { Button, Modal, message } from 'antd';
+import { Button, Modal, Space, message } from 'antd';
 import { signIn, useSession } from 'next-auth/react';
 import { UserInfo } from '../UserInfo';
 import { useEffect } from 'react';
 import { PwdForm } from '../PwdForm';
 import { useForm } from 'antd/es/form/Form';
+import { modalLogin } from '../LoginModal';
 
 export const User: React.FC = () => {
   const { data: session } = useSession();
@@ -55,13 +56,25 @@ export const User: React.FC = () => {
 
   if (!session) {
     return (
-      <Button
-        onClick={() => {
-          signIn();
-        }}
-      >
-        登录
-      </Button>
+      <Space>
+        <Button
+          type="primary"
+          onClick={() => {
+            modalLogin();
+          }}
+        >
+          登录
+        </Button>
+        <Button
+          type="primary"
+          ghost
+          onClick={() => {
+            modalLogin('register');
+          }}
+        >
+          注册
+        </Button>
+      </Space>
     );
   }
   return <UserInfo user={session.user} />;
