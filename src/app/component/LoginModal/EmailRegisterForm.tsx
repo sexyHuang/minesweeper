@@ -1,6 +1,7 @@
 import { Button, Form, Input, message } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 
 type EmailRegisterFormProps = {
   onSuccess?: () => void;
@@ -9,9 +10,12 @@ type EmailRegisterFormProps = {
 export const EmailRegisterForm: React.FC<EmailRegisterFormProps> = ({
   onSuccess
 }) => {
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   return (
     <Form
       onFinish={async value => {
+        setIsSubmitting(true);
         try {
           const res = await signIn('email', { ...value, redirect: false });
           if (!res?.ok) {
@@ -21,6 +25,8 @@ export const EmailRegisterForm: React.FC<EmailRegisterFormProps> = ({
           onSuccess?.();
         } catch (e) {
           message.error('注册失败, 请重试');
+        } finally {
+          setIsSubmitting(false);
         }
       }}
     >
@@ -39,7 +45,13 @@ export const EmailRegisterForm: React.FC<EmailRegisterFormProps> = ({
       >
         <Input placeholder="请输入邮箱" />
       </FormItem>
-      <Button type="primary" htmlType="submit" block size="large">
+      <Button
+        type="primary"
+        htmlType="submit"
+        block
+        size="large"
+        loading={isSubmitting}
+      >
         注册
       </Button>
     </Form>
