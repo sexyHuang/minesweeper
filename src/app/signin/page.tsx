@@ -4,14 +4,14 @@ import { Box } from './styled';
 
 const Signin: React.FC = () => {
   const redirect = decodeURIComponent(
-    new URLSearchParams(window.location.search).get('callbackUrl') ?? '/'
+    new URLSearchParams(location.search).get('callbackUrl') ?? '/'
   );
   return (
     <Box>
       <LoginForm
         onSuccess={type => {
           if (type === 'login') {
-            window.location.href = redirect;
+            location.href = redirect;
           }
         }}
       />
